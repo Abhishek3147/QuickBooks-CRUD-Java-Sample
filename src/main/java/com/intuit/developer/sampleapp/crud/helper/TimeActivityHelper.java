@@ -2,7 +2,7 @@ package com.intuit.developer.sampleapp.crud.helper;
 
 import java.text.ParseException;
 
-import org.apache.commons.lang.RandomStringUtils;
+import org.apache.commons.lang3.RandomStringUtils;
 
 import com.intuit.ipp.data.Employee;
 import com.intuit.ipp.data.TimeActivity;

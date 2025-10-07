@@ -9,7 +9,7 @@ import com.intuit.ipp.services.DataService;
 import com.intuit.ipp.services.QueryResult;
 import com.intuit.ipp.util.Logger;
 import com.intuit.ipp.data.RecurringTransaction;
-import org.apache.commons.lang.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
 import java.util.List;
 
