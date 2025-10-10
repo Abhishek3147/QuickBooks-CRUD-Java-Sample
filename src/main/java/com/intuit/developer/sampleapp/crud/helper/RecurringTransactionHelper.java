@@ -5,7 +5,7 @@ import com.intuit.ipp.data.*;
 import com.intuit.ipp.exception.FMSException;
 import com.intuit.ipp.services.DataService;
 import com.intuit.ipp.util.DateUtils;
-import org.apache.commons.lang.RandomStringUtils;
+import org.apache.commons.lang3.RandomStringUtils;
 
 import javax.xml.bind.JAXBElement;
 import javax.xml.namespace.QName;

@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import com.intuit.ipp.services.QueryResult;
-import org.apache.commons.lang.RandomStringUtils;
+import org.apache.commons.lang3.RandomStringUtils;
 
 import com.intuit.ipp.data.Account;
 import com.intuit.ipp.data.Item;
@@ -13,7 +13,7 @@ import com.intuit.ipp.data.ItemTypeEnum;
 import com.intuit.ipp.data.ReferenceType;
 import com.intuit.ipp.exception.FMSException;
 import com.intuit.ipp.services.DataService;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * @author dderose

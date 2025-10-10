@@ -3,7 +3,7 @@ package com.intuit.developer.sampleapp.crud.helper;
 import java.math.BigDecimal;
 import java.util.List;
 
-import org.apache.commons.lang.RandomStringUtils;
+import org.apache.commons.lang3.RandomStringUtils;
 
 import com.intuit.ipp.data.ReferenceType;
 import com.intuit.ipp.data.Term;

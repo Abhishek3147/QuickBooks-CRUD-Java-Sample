@@ -3,7 +3,7 @@ package com.intuit.developer.sampleapp.crud.entities.invoice;
 import java.text.ParseException;
 import java.util.List;
 
-import org.apache.commons.lang.RandomStringUtils;
+import org.apache.commons.lang3.RandomStringUtils;
 
 import com.intuit.developer.sampleapp.crud.helper.InvoiceHelper;
 import com.intuit.developer.sampleapp.crud.qbo.DataServiceFactory;
