@@ -1,77 +1,96 @@
-[![Rate your Sample](views/Ratesample.png)][ss1][![Yes](views/Thumbup.png)][ss2][![No](views/Thumbdown.png)][ss3]
-
 # SampleApp-CRUD-Java
-SampleApp-CRUD-Java
 
-<p>Welcome to the Intuit Developer's Java Sample App for CRUD operations.</p>
-<p>This sample app is meant to provide working examples of how to integrate your app with the Intuit Small Business ecosystem. Specifically, this sample application demonstrates the following:</p>
+A Java sample application demonstrating CRUD operations against QuickBooks Online (QBO) using the Intuit QuickBooks Java SDK.
 
-<ul>
-	<li>Create, Read, Query, Update, Delete, Void entities.</li>
-	<li>All operations are performed using QuickBooks Java SDK.</li>
-</ul>
+## Overview
 
-<p>Please note that while these examples work, features not called out above are not intended to be taken and used in production business applications. In other words, this is not a seed project to be taken cart blanche and deployed to your production environment.</p>  
+This repository provides a working sample app for performing Create, Read, Query, Update, Delete, and Void operations on many QBO entities. It is intended for learning and exploration of QBO integration patterns, not as a production-ready application.
 
-<p>For example, certain concerns are not addressed at all in our samples (e.g. security, privacy, scalability). In our sample apps, we strive to strike a balance between clarity, maintainability, and performance where we can. However, clarity is ultimately the most important quality in a sample app.</p>
+Key capabilities:
+- CRUD examples for QBO entities such as Customer, Invoice, Bill, Payment, Item, Vendor, Employee, JournalEntry and more.
+- Uses the Intuit QuickBooks Online Java SDK.
+- Includes helper classes for entity construction and QBO service setup.
+- Configurable connection settings via `src/main/resources/config.properties`.
 
-<p>Therefore there are certain instances where we might forgo a more complicated implementation (e.g. caching a frequently used value, robust error handling, more generic domain model structure) in favor of code that is easier to read. In that light, we welcome any feedback that makes our samples apps easier to learn from.</p>
+## Prerequisites
 
-## Table of Contents
+- Java 1.8
+- Maven installed
+- Intuit Developer account
+- QuickBooks Online app configured on [developer.intuit.com](https://developer.intuit.com)
+- Sandbox company connected to your app
 
-* [Requirements](#requirements)
-* [First Use Instructions](#first-use-instructions)
-* [Running the code](#running-the-code)
-* [Project Structure](#project-structure)
+## Dependencies
 
+Configured in `pom.xml`:
+- `com.intuit.quickbooks-online:ipp-v3-java-devkit:6.5.1`
+- `com.intuit.quickbooks-online:ipp-v3-java-data:6.5.1`
+- `org.slf4j:slf4j-log4j12:1.7.21`
 
-## Requirements
+## Configuration
 
-In order to successfully run this sample app you need a few things:
+Update `src/main/resources/config.properties` before running samples.
 
-1. Java 1.8
-2. A [developer.intuit.com](http://developer.intuit.com) account
-3. An app on [developer.intuit.com](http://developer.intuit.com) and the associated app token, consumer key, and consumer secret.
-4. One sandbox company, connect the company with your app and generate the oauth tokens.
-5. QuickBooks Java SDK, download from [here](https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.intuit.quickbooks-online%22) (see instructions in "Running the code" section on how to include it) 
+Example settings:
+```properties
+# For OAuth2 apps set oauth.type=2
+oauth.type=2
 
-## First Use Instructions
+oauth2.accessToken=
 
-1. Clone the GitHub repo to your computer
-2. Import the project in Eclipse or any other IDE of your choice
-3. In [`config.properties`](src/main/resources/config.properties), set oauth.type as 1 or 2 depending on type of app you have. For OAuth2 apps set value as 2.
-4. For OAuth2 apps, fill in the [`config.properties`](src/main/resources/config.properties) file values (realmid, oauth2.accessToken).
-5. For OAuth1 apps, fill in the [`config.properties`](src/main/resources/config.properties) file values (realmId, app token, consumer key, consumer secret, access token key, access token secret). 
-5. Run maven install.
+# Company id or realmId
+company.id=
+```
 
-Note: If you do not want to use maven, just import the project and add the jars to your project externally.
+- `oauth.type`:
+  - `2` for OAuth2
+  - `1` for OAuth1 (legacy support)
+- `oauth2.accessToken`: OAuth2 access token for your connected QBO company
+- `company.id`: realm ID for the QuickBooks company
 
-## Running the code
+> For OAuth1 apps, you must also supply the relevant app token, consumer key, consumer secret, access token key, and access token secret. This repository is primarily configured for OAuth2 usage.
 
-This app is directed to provide individual sample code for CRUD operations for various QBO entities.
-Each class has a main method that can be run individually.
+## Build
 
-Steps described below is to run the class for creating a customer in Eclipse IDE.
+From the project root:
+```bash
+mvn clean install
+```
 
-1. Go to CustomerCreate.java in package com.intuit.developer.sampleapp.crud.entities.customer
-2. Right click the file and Run as Java application
-3. On the console you'll see the log being generated with the new customer id.
+## Running Samples
 
-Follow similar steps for other classes.
+Each sample class includes a `main()` method and can be executed independently.
 
-Notes: 
+Typical usage:
+1. Open a sample class under `src/main/java/com/intuit/developer/sampleapp/crud/entities/<entity>`
+2. Run the class as a Java application in your IDE
+3. Watch the console output for success messages and returned IDs
 
-1. The sample code has been implemented for US locale company, certain fields may not be applicable for other locales or minor version. Care should be taken to handle such scenarios separately.
-2. Before running AttachableUpload sample, update the path of the pdf that you wish to upload to point to your local directory. 
+### Example sample paths
+- `src/main/java/com/intuit/developer/sampleapp/crud/entities/customer/CustomerCreate.java`
+- `src/main/java/com/intuit/developer/sampleapp/crud/entities/invoice/InvoiceCreate.java`
+- `src/main/java/com/intuit/developer/sampleapp/crud/entities/bill/BillCreate.java`
+- `src/main/java/com/intuit/developer/sampleapp/crud/entities/vendor/VendorCreate.java`
 
 ## Project Structure
- **Standard Java coding structure is used for the sample app**
 
-* Java code for CRUD operations are located under [`entities`](src/main/java/com/intuit/developer/sampleapp/crud/entities) directory for each entitiy
-* Java code for Helper Classes are located under [`helper`](src/main/java/com/intuit/developer/sampleapp/crud/helper) directory for each entitiy
-* Java code for QBO DataService object are located under [`qbo`](src/main/java/com/intuit/developer/sampleapp/crud/qbo) directory 
-* Config files are located in the [`resources`](src/main/resources) directory
+- `src/main/java/com/intuit/developer/sampleapp/crud/entities/`
+  - Sample CRUD classes organized by QBO entity
+- `src/main/java/com/intuit/developer/sampleapp/crud/helper/`
+  - Helper classes and model helpers used by sample flows
+- `src/main/java/com/intuit/developer/sampleapp/crud/qbo/`
+  - QBO service factory classes
+- `src/main/resources/`
+  - `config.properties` and supporting configuration files
 
-[ss1]: #
-[ss2]: https://customersurveys.intuit.com/jfe/form/SV_9LWgJBcyy3NAwHc?check=Yes&checkpoint=SampleApp-CRUD-Java&pageUrl=github
-[ss3]: https://customersurveys.intuit.com/jfe/form/SV_9LWgJBcyy3NAwHc?check=No&checkpoint=SampleApp-CRUD-Java&pageUrl=github
+## Notes
+
+- The sample code focuses on clarity and learning, not full production hardening.
+- Some samples assume US locale fields and may require adjustment for other regions.
+- Before running attachments or file upload samples, update any local file paths used in the sample.
+- If you do not use Maven, import the project into your IDE and add the required SDK jars manually.
+
+## License
+
+This sample is provided for educational purposes and is not intended as a full production solution.
+
